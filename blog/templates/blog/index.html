@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    My Blog
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/index.css" %}"
+{% endblock %}
+
+{% block content %}
+    <header id="main-navigation">
+        <h1><a href="">Navid' Blog</a></h1>
+        <nav>
+            <a href="">All Posts</a>
+        </nav>
+    </header>
+
+    <section id="welcome">
+        <header>
+            <img src="{% static "blog/images/navid.JPG" %}" alt="Navid - The author of this blog" />
+            <h2>NAVID'S BLOG</h2>
+        </header>
+        <p>Hi, I am Navid, Welcome to my blog.</p>
+    </section>
+
+    <section id="latest-posts">
+        <h2>My Latest Thoughts</h2>
+        <ul>
+            <li>
+                <article class="post">
+                    <a href="">
+                        <img src="{% static "blog/images/Maldives.jpg" %}" alt="Mountain Hiking" />
+                        <div class="post__content">
+                            <h3>Mountain Hiking</h3>
+                            <p>Theres nothing like the views you get when hiking in the mountains!
+                               And I wasn't even prepared for what happened whilst I was enjoying the view!
+                        </div>
+                    </a>
+                </article>
+            </li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>What I do?</h2>
+        <p>
+            I love programming, creating new things by new technologies to make the world a better place for itself.
+        </p>
+        <p>
+            My goal is to keep on growing as a developer - and if I could help you the same, call me babe ;)
+        </p>
+    </section>
+
+{% endblock %}
