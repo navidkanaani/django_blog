@@ -1,13 +1,15 @@
+from datetime import date
+from unittest import load_tests
 from django.shortcuts import render
 
-posts = [
+all_posts = [
     {
         "slug": "hike-in-the-mountains",
         "image": "mountains.jpg",
         "author": "Navid",
-        "data": date(2021, 7, 12),
+        "date": date(2021, 7, 12),
         "title": "Mountain Hiking",
-        "excerpt": "Theres nothing like the views you get when hiking in the mountains! And I wasn't even prepared for what happened whilst I was enjoying the view!"
+        "excerpt":"Theres nothing like the views you get when hiking in the mountains! And I wasn't even prepared for what happened whilst I was enjoying the view!",
         "content":"""
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum in fuga quo sunt neque, 
             minima fugiat provident, doloremque rerum debitis autem saepe aliquid minus sequi, 
@@ -21,12 +23,12 @@ posts = [
         """
     },
     {
-        "slug": "rest-in-the-maldives",
+        "slug": "visiting-the-maldives",
         "image": "maldives.jpg",
         "author": "Navid",
-        "data": date(2021, 6, 23),
-        "title": "Have a rest in Maldives",
-        "excerpt": "Theres nothing like the views you get when hiking in the mountains! And I wasn't even prepared for what happened whilst I was enjoying the view!"
+        "date": date(2021, 6, 23),
+        "title": "Malidives is perfect!",
+        "excerpt": "If its not the paradise so where is it!?",
         "content":"""
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum in fuga quo sunt neque, 
             minima fugiat provident, doloremque rerum debitis autem saepe aliquid minus sequi, 
@@ -40,12 +42,12 @@ posts = [
         """
     },
     {
-        "slug": "running-on-the-sands",
-        "image": "maldives.jpg",
+        "slug": "going-to-the-beach",
+        "image": "sands.jpg",
         "author": "Navid",
-        "data": date(2021, 8, 10),
-        "title": "Running on the sands",
-        "excerpt": "Theres nothing like the views you get when hiking in the mountains! And I wasn't even prepared for what happened whilst I was enjoying the view!"
+        "date": date(2021, 8, 10),
+        "title": "Going to the beach!",
+        "excerpt": "Running on hot sands is an amazing feeling that you can't have with a bitch!",
         "content":"""
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum in fuga quo sunt neque, 
             minima fugiat provident, doloremque rerum debitis autem saepe aliquid minus sequi, 
@@ -60,13 +62,25 @@ posts = [
     }
 ]
 
+def get_key(post):
+    return post['date']
+
 # Create your views here.
 
 def index(request):
-    return render(request, "blog/index.html")
+    sorted_post = sorted(all_posts, key=get_key)
+    latest_posts = sorted_post[-3:]
+    return render(request, "blog/index.html", {
+        "posts": latest_posts
+    })
 
 def posts(request):
-    return render(request, "blog/all-posts.html")
+    return render(request, "blog/all-posts.html", {
+        "all_posts": all_posts
+    })
 
 def post_detail(request, slug):
-    return render(request, "blog/post-detail.html")
+    selected_post = next(post for post in all_posts if post['slug'] == slug)
+    return render(request, "blog/post-detail.html", {
+        "post": selected_post
+    })
