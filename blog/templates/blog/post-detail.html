@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Post Title
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/post-detail.css" %}" />
+{% endblock %}
+
+{% block content%}
+    <section id="summary">
+        <h2>This post title</h2>
+        <article>
+            <img src="{% static "blog/images/Maldives.jpg" %}" />
+            <address>By Navid</address>
+            <div>Last updated on <time>June 10th</time></div>
+        </article>
+    </section>
+
+    <main>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum in fuga quo sunt neque, 
+            minima fugiat provident, doloremque rerum debitis autem saepe aliquid minus sequi, 
+            reiciendis iste vero quod nesciunt?
+        </p>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum in fuga quo sunt neque, 
+            minima fugiat provident, doloremque rerum debitis autem saepe aliquid minus sequi, 
+            reiciendis iste vero quod nesciunt?
+        </p>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum in fuga quo sunt neque, 
+            minima fugiat provident, doloremque rerum debitis autem saepe aliquid minus sequi, 
+            reiciendis iste vero quod nesciunt?
+        </p>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum in fuga quo sunt neque, 
+            minima fugiat provident, doloremque rerum debitis autem saepe aliquid minus sequi, 
+            reiciendis iste vero quod nesciunt?
+        </p>
+    </main>
+
+{% endblock %}
