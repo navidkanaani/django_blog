@@ -35,7 +35,7 @@ class Post(models.Model):
     tag = models.ManyToManyField(Tag)
 
     def __str__(self):
-        return f"{self.title}, {self.date}, {self.author}, {self.tag}"
+        return f"{self.title}, {self.author}"
 
 
 class Comment(models.Model):
